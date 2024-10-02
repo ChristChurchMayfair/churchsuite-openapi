@@ -549,6 +549,7 @@ paths:
                           type: string
   /v1/addressbook/contact/{personId}:
     get:
+      operationId: getContact
       tags:
         - Address Book
       description: ''
@@ -843,8 +844,16 @@ paths:
                     type: number
 
       responses:
-        '200':
-          description: OK
+        '201':
+          description: Created
+          links:
+            GetContactByPersonId:
+              operationId: getContact
+              parameters:
+                personId: "$response.body#/id"
+              description: >
+                The `id` value returned in the response can be used as
+                the `personId` parameter in `GET /v1/addressbook/contact/{personId}`.
           content:
             application/json:
               schema:

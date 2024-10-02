@@ -47,6 +47,8 @@ components:
 paths:
   /v1/whoami:
     get:
+      tags:
+        - General
       summary: Return data on the user accessing the API
       responses:
         "200": # status code
@@ -94,6 +96,8 @@ paths:
                     type: object
   /v1/profile:
     get:
+      tags:
+        - General
       description: ''
       parameters: []
       responses:
@@ -199,6 +203,8 @@ paths:
                     type: string
   /v1/addressbook/contacts:
     get:
+      tags:
+        - Address Book
       description: ''
       parameters:
         - in: query
@@ -408,6 +414,8 @@ paths:
                           type: string
   /v1/addressbook/contact/{personId}:
     get:
+      tags:
+        - Address Book
       description: ''
       parameters:
         - in: path
@@ -568,6 +576,8 @@ paths:
           description: OK
   /v1/addressbook/contact/{personId}/tags:
     get:
+      tags:
+        - Address Book
       description: ''
       parameters:
         - in: path
@@ -623,6 +633,8 @@ paths:
                           type: string
   /v1/addressbook/contact/{personId}/keydates:
     get:
+      tags:
+        - Address Book
       description: ''
       parameters:
         - in: path
@@ -655,6 +667,8 @@ paths:
                           type: number
   /v1/addressbook/contact:
     post:
+      tags:
+        - Address Book
       description: ''
       parameters: []
       requestBody:
@@ -833,6 +847,8 @@ paths:
                     type: string
   /v1/addressbook/tags:
     get:
+      tags:
+        - Address Book
       description: ''
       parameters: []
       responses:
@@ -883,6 +899,8 @@ paths:
                           type: string
   /v1/addressbook/tag/{tagId}:
     get:
+      tags:
+        - Address Book
       description: ''
       parameters:
         - in: path
@@ -924,6 +942,8 @@ paths:
                     type: string
   /v1/addressbook/tag/1/contacts:
     get:
+      tags:
+        - Address Book
       description: ''
       parameters: []
       responses:

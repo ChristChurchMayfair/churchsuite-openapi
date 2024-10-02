@@ -1,0 +1,1093 @@
+openapi: 3.0.3
+info:
+  title: Church Suite API
+  description: >-
+    This is an OpenAPI spec for the Church Suite API, reverse engineered based on the documentation provides in the Church Suite Github API repo.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: tom@christchurchmayfair.org
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about the Church Suite API
+  url: https://github.com/ChurchSuite/churchsuite-api/tree/master
+servers:
+  - url: https://api.churchsuite.com
+    description: Church Suite Production API
+components:
+  schemas:
+    ModuleInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        permission_use:
+          type: boolean
+        permission_manage:
+          type: boolean
+        permission_connect:
+          type: boolean
+  securitySchemes:
+    AuthHeader:
+      type: apiKey
+      name: "X-Auth"
+      in: header
+    ApplicationId:
+      type: apiKey
+      name: "X-Application"
+      in: header
+    AccountId:
+      type: apiKey
+      name: "X-Account"
+      in: header
+paths:
+  /v1/whoami:
+    get:
+      summary: Return data on the user accessing the API
+      responses:
+        "200": # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  contact_id:
+                    type: string
+                    nullable: true
+                  name:
+                    type: string
+                  email:
+                    type: string
+                  type:
+                    type: string
+                  modules:
+                    type: object
+                    properties:
+                      addressbook:
+                        $ref: "#/components/schemas/ModuleInfo"
+                      children:
+                        $ref: "#/components/schemas/ModuleInfo"
+                      attendance:
+                        $ref: "#/components/schemas/ModuleInfo"
+                      calendar:
+                        $ref: "#/components/schemas/ModuleInfo"
+                      smallgroups:
+                        $ref: "#/components/schemas/ModuleInfo"
+                      rotas:
+                        $ref: "#/components/schemas/ModuleInfo"
+                      giving:
+                        $ref: "#/components/schemas/ModuleInfo"
+                      bookings:  
+                        $ref: "#/components/schemas/ModuleInfo"
+                  images:
+                    type: array
+                    items:
+                      type: object
+                  sites:
+                    type: object
+  /v1/profile:
+    get:
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  timezone:
+                    type: string
+                  currency:
+                    type: string
+                  language:
+                    type: string
+                  give2_keyword:
+                    type: string
+                  first_day_of_week:
+                    type: string
+                  data_protection_title:
+                    type: string
+                  data_protection_body:
+                    type: string
+                  data_protection_help:
+                    type: string
+                  email_font:
+                    type: string
+                  email_footer:
+                    type: string
+                  email_template:
+                    type: string
+                  email_open_tracking:
+                    type: boolean
+                  billing_address:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                        nullable: true
+                      line1:
+                        type: string
+                      line2:
+                        type: string
+                      line3:
+                        type: string
+                      city:
+                        type: string
+                      county:
+                        type: string
+                      postcode:
+                        type: string
+                      country:
+                        type: string
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+                  billing_region:
+                    type: string
+                  billing_contact:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      telephone:
+                        type: string
+                      email:
+                        type: string
+                  account_contact:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      telephone:
+                        type: string
+                      email:
+                        type: string
+                  data_protection_contact:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      telephone:
+                        type: string
+                      email:
+                        type: string
+                  ctime:
+                    type: string
+                  cuser:
+                    type: string
+                  mtime:
+                    type: string
+                  muser:
+                    type: string
+  /v1/addressbook/contacts:
+    get:
+      description: ''
+      parameters:
+        - in: query
+          name: name
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: q
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: per_page
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: public_access
+          required: false
+          schema:
+            type: integer
+            enum: [0,1]
+        - in: query
+          name: public_invited
+          required: false
+          schema:
+            type: integer
+            enum: [0,1]
+        - in: query
+          name: public_visible
+          required: false
+          schema:
+            type: integer
+            enum: [0,1]
+        - in: query
+          name: view
+          required: false
+          schema:
+            type: string
+            enum: [active,archived]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    type: object
+                    properties:
+                      no_results:
+                        type: number
+                      page:
+                        type: number
+                      per_page:
+                        type: number
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        person_id:
+                          type: number
+                        uuid:
+                          type: string
+                        type_id:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        title:
+                          type: string
+                        middle_name:
+                          type: string
+                        formal_name:
+                          type: string
+                        former_name:
+                          type: string
+                        maiden_name:
+                          type: string
+                        sex:
+                          type: string
+                        date_of_birth:
+                          type: string
+                        marital:
+                          type: string
+                        spouse_id:
+                          type: number
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        address3:
+                          type: string
+                        city:
+                          type: string
+                        county:
+                          type: string
+                        postcode:
+                          type: string
+                        country:
+                          type: string
+                        latitude:
+                          type: number
+                        longitude:
+                          type: number
+                        telephone:
+                          type: string
+                        mobile:
+                          type: string
+                        work_telephone:
+                          type: string
+                        email:
+                          type: string
+                        job:
+                          type: string
+                        employer:
+                          type: string
+                        public_options:
+                          type: object
+                          properties:
+                            invited:
+                              type: boolean
+                            access:
+                              type: boolean
+                            visible:
+                              type: object
+                              properties:
+                                enabled:
+                                  type: boolean
+                                address:
+                                  type: boolean
+                                email:
+                                  type: boolean
+                                mobile:
+                                  type: boolean
+                                telephone:
+                                  type: boolean
+                        communication:
+                          type: object
+                          properties:
+                            general_email:
+                              type: number
+                            general_sms:
+                              type: number
+                            phone:
+                              type: number
+                            post:
+                              type: number
+                            rota_email:
+                              type: number
+                            rota_sms:
+                              type: number
+                        location:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                            latitude:
+                              type: string
+                            longitude:
+                              type: string
+                        custom_fields:
+                          type: array
+                          items:
+                            type: object
+                        images:
+                          type: array
+                          items:
+                            type: object
+                        ongoing_consent:
+                          type: object
+                          properties:
+                            required:
+                              type: number
+                            request_ctime:
+                              type: string
+                            granted_ctime:
+                              type: string
+                            granted_name:
+                              type: string
+                        status:
+                          type: string
+                        site_id:
+                          type: number
+                        site_ids:
+                          type: array
+                          items:
+                            type: string
+                        mtime:
+                          type: string
+                        muser:
+                          type: string
+                        ctime:
+                          type: string
+                        cuser:
+                          type: string
+  /v1/addressbook/contact/{personId}:
+    get:
+      description: ''
+      parameters:
+        - in: path
+          name: personId
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  person_uuid:
+                    type: string
+                  type_id:
+                    type: string
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  title:
+                    type: string
+                  middle_name:
+                    type: string
+                  formal_name:
+                    type: string
+                  former_name:
+                    type: string
+                  maiden_name:
+                    type: string
+                  sex:
+                    type: string
+                  date_of_birth:
+                    type: string
+                  marital:
+                    type: string
+                  spouse_id:
+                    type: integer
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  address3:
+                    type: string
+                  city:
+                    type: string
+                  county:
+                    type: string
+                  postcode:
+                    type: string
+                  country:
+                    type: string
+                  latitude:
+                    type: number
+                  longitude:
+                    type: number
+                  telephone:
+                    type: string
+                  mobile:
+                    type: string
+                  work_telephone:
+                    type: string
+                  email:
+                    type: string
+                  job:
+                    type: string
+                  employer:
+                    type: string
+                  public_options:
+                    type: object
+                    properties:
+                      invited:
+                        type: boolean
+                      access:
+                        type: boolean
+                      visible:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          address:
+                            type: boolean
+                          email:
+                            type: boolean
+                          mobile:
+                            type: boolean
+                          telephone:
+                            type: boolean
+                  communication:
+                    type: object
+                    properties:
+                      general_email:
+                        type: number
+                      general_sms:
+                        type: number
+                      phone:
+                        type: number
+                      post:
+                        type: number
+                      rota_email:
+                        type: number
+                      rota_sms:
+                        type: number
+                  location:
+                    type: array
+                    items:
+                      type: object
+                  custom_fields:
+                    type: array
+                    items:
+                      type: object
+                  images:
+                    type: array
+                    items:
+                      type: object
+                  ongoing_consent:
+                    type: object
+                    properties:
+                      required:
+                        type: number
+                      request_ctime:
+                        type: string
+                      granted_ctime:
+                        type: string
+                      granted_name:
+                        type: string
+                  status:
+                    type: string
+                  site_id:
+                    type: number
+                  site_ids:
+                    type: array
+                    items:
+                      type: string
+                  mtime:
+                    type: string
+                  muser:
+                    type: string
+                  ctime:
+                    type: string
+                  cuser:
+                    type: string
+    delete:
+      description: ''
+      parameters:
+        - in: path
+          name: personId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK
+  /v1/addressbook/contact/{personId}/tags:
+    get:
+      description: ''
+      parameters:
+        - in: path
+          name: personId
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    type: object
+                    properties:
+                      no_results:
+                        type: number
+                      page:
+                        type: number
+                      per_page:
+                        type: number
+                  tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        tag_id:
+                          type: number
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        colour:
+                          type: string
+                        type:
+                          type: string
+                        tag_no_contacts:
+                          type: number
+                        no_contacts:
+                          type: number
+                        ctime:
+                          type: string
+                        cuser:
+                          type: string
+                        mtime:
+                          type: string
+                        muser:
+                          type: string
+  /v1/addressbook/contact/{personId}/keydates:
+    get:
+      description: ''
+      parameters:
+        - in: path
+          name: personId
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keydates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        date:
+                          type: string
+                        description:
+                          type: string
+                        resource_keydate_id:
+                          type: number
+  /v1/addressbook/contact:
+    post:
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                postcode:
+                  type: string
+                country:
+                  type: string
+                sex:
+                  type: string
+                marital:
+                  type: string
+                dates:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      date:
+                        type: string
+                site_ids:
+                  type: array
+                  items:
+                    type: number
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  person_uuid:
+                    type: string
+                  type_id:
+                    type: string
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  title:
+                    type: string
+                  middle_name:
+                    type: string
+                  formal_name:
+                    type: string
+                  former_name:
+                    type: string
+                  maiden_name:
+                    type: string
+                  sex:
+                    type: string
+                  date_of_birth:
+                    type: string
+                  marital:
+                    type: string
+                  spouse_id:
+                    type: string
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  address3:
+                    type: string
+                  city:
+                    type: string
+                  county:
+                    type: string
+                  postcode:
+                    type: string
+                  country:
+                    type: string
+                  latitude:
+                    type: number
+                  longitude:
+                    type: number
+                  telephone:
+                    type: string
+                  mobile:
+                    type: string
+                  work_telephone:
+                    type: string
+                  email:
+                    type: string
+                  job:
+                    type: string
+                  employer:
+                    type: string
+                  public_options:
+                    type: object
+                    properties:
+                      invited:
+                        type: boolean
+                      access:
+                        type: boolean
+                      visible:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          address:
+                            type: boolean
+                          email:
+                            type: boolean
+                          mobile:
+                            type: boolean
+                          telephone:
+                            type: boolean
+                  communication:
+                    type: object
+                    properties:
+                      general_email:
+                        type: number
+                      general_sms:
+                        type: number
+                      phone:
+                        type: number
+                      post:
+                        type: number
+                      rota_email:
+                        type: number
+                      rota_sms:
+                        type: number
+                  location:
+                    type: array
+                    items:
+                      type: object
+                  custom_fields:
+                    type: array
+                    items:
+                      type: object
+                  images:
+                    type: array
+                    items:
+                      type: object
+                  ongoing_consent:
+                    type: object
+                    properties:
+                      required:
+                        type: number
+                      request_ctime:
+                        type: string
+                      granted_ctime:
+                        type: string
+                      granted_name:
+                        type: string
+                  status:
+                    type: string
+                  site_id:
+                    type: number
+                  site_ids:
+                    type: array
+                    items:
+                      type: string
+                  mtime:
+                    type: string
+                  muser:
+                    type: string
+                  ctime:
+                    type: string
+                  cuser:
+                    type: string
+  /v1/addressbook/tags:
+    get:
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    type: object
+                    properties:
+                      no_results:
+                        type: number
+                      page:
+                        type: number
+                      per_page:
+                        type: number
+                  tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        tag_id:
+                          type: number
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        colour:
+                          type: string
+                        type:
+                          type: string
+                        tag_no_contacts:
+                          type: number
+                        no_contacts:
+                          type: number
+                        ctime:
+                          type: string
+                        cuser:
+                          type: string
+                        mtime:
+                          type: string
+                        muser:
+                          type: string
+  /v1/addressbook/tag/{tagId}:
+    get:
+      description: ''
+      parameters:
+        - in: path
+          name: tagId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  tag_id:
+                    type: number
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  colour:
+                    type: string
+                  type:
+                    type: string
+                  tag_no_contacts:
+                    type: number
+                  no_contacts:
+                    type: number
+                  ctime:
+                    type: string
+                  cuser:
+                    type: string
+                  mtime:
+                    type: string
+                  muser:
+                    type: string
+  /v1/addressbook/tag/1/contacts:
+    get:
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    type: object
+                    properties:
+                      no_results:
+                        type: number
+                      page:
+                        type: number
+                      per_page:
+                        type: number
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        type_id:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        title:
+                          type: string
+                        middle_name:
+                          type: string
+                        formal_name:
+                          type: string
+                        former_name:
+                          type: string
+                        maiden_name:
+                          type: string
+                        sex:
+                          type: string
+                        date_of_birth:
+                          type: string
+                        person_id:
+                          type: number
+                        uuid:
+                          type: string
+                        marital:
+                          type: string
+                        spouse_id:
+                          type: number
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        address3:
+                          type: string
+                        city:
+                          type: string
+                        county:
+                          type: string
+                        postcode:
+                          type: string
+                        country:
+                          type: string
+                        latitude:
+                          type: number
+                        longitude:
+                          type: number
+                        telephone:
+                          type: string
+                        mobile:
+                          type: string
+                        work_telephone:
+                          type: string
+                        email:
+                          type: string
+                        job:
+                          type: string
+                        employer:
+                          type: string
+                        public_options:
+                          type: object
+                          properties:
+                            invited:
+                              type: boolean
+                            access:
+                              type: boolean
+                            visible:
+                              type: object
+                              properties:
+                                enabled:
+                                  type: boolean
+                                address:
+                                  type: boolean
+                                email:
+                                  type: boolean
+                                mobile:
+                                  type: boolean
+                                telephone:
+                                  type: boolean
+                        communication:
+                          type: object
+                          properties:
+                            general_email:
+                              type: number
+                            general_sms:
+                              type: number
+                            phone:
+                              type: number
+                            post:
+                              type: number
+                            rota_email:
+                              type: number
+                            rota_sms:
+                              type: number
+                        location:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                            latitude:
+                              type: string
+                            longitude:
+                              type: string
+                        custom_fields:
+                          type: array
+                          items:
+                            type: object
+                        images:
+                          type: array
+                          items:
+                            type: object
+                        ongoing_consent:
+                          type: object
+                          properties:
+                            required:
+                              type: number
+                            request_ctime:
+                              type: string
+                            granted_ctime:
+                              type: string
+                            granted_name:
+                              type: string
+                        status:
+                          type: string
+                        site_id:
+                          type: number
+                        site_ids:
+                          type: array
+                          items:
+                            type: string
+                        mtime:
+                          type: string
+                        muser:
+                          type: string
+                        ctime:
+                          type: string
+                        cuser:
+                          type: string
+security:
+  - AuthHeader: []
+    ApplicationId: []
+    AccountId: []

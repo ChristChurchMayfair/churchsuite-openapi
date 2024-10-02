@@ -564,6 +564,8 @@ paths:
                   cuser:
                     type: string
     delete:
+      tags:
+        - General
       description: ''
       parameters:
         - in: path

@@ -266,18 +266,21 @@ paths:
           required: false
           schema:
             type: string
+          example: "gavin"
         - in: query
           name: page
           description: "Return the nth page of contacts"
           required: false
           schema:
             type: integer
+          example: 2
         - in: query
           name: per_page
           description: "Return n contacts per page"
           required: false
           schema:
             type: integer
+          example: 100
         - in: query
           name: public_access
           description: "Return contacts filtered by \"Allow My ChurchSuite access\""
@@ -285,6 +288,7 @@ paths:
           schema:
             type: integer
             enum: [0,1]
+          example: 1
         - in: query
           name: public_invited
           description: "Return contacts filtered by whether they have been sent a My ChurchSuite invite or not."
@@ -292,6 +296,7 @@ paths:
           schema:
             type: integer
             enum: [0,1]
+          example: 1
         - in: query
           name: public_visible
           description: "Return contacts filtered by their Public Communication \"Name is visible\" setting. Default is 1"
@@ -300,6 +305,7 @@ paths:
             type: integer
             nullable: true
             enum: [null, 0,1]
+          example: 1
         - in: query
           name: view
           description: "Return archived contacts; by default only active contacts will be returned"
@@ -307,6 +313,7 @@ paths:
           schema:
             type: string
             enum: [active,archived]
+          example: archived
       responses:
         '200':
           description: OK

@@ -314,6 +314,78 @@ paths:
             application/json:
               schema:
                 type: object
+                example:
+                  pagination:
+                    no_results: 3
+                    page: 1
+                    per_page: 1
+                  contacts:
+                  - id: 112
+                    person_id: 172
+                    uuid: cb246f98-65ef-4cd5-825f-1db639a37490
+                    type_id: contact_112
+                    first_name: George
+                    last_name: Baker
+                    title: Mr
+                    middle_name: ''
+                    formal_name: Formal
+                    former_name: ''
+                    maiden_name: ''
+                    sex: m
+                    date_of_birth: '1969-03-30'
+                    marital: married
+                    spouse_id: 1042
+                    address: 44 Pruder Lane
+                    address2: ''
+                    address3: ''
+                    city: Nottingham
+                    county: ''
+                    postcode: NG9 2FE
+                    country: ''
+                    latitude: 52.926458
+                    longitude: -1.204129
+                    telephone: 0161 730 2326
+                    mobile: '07987 654 123'
+                    work_telephone: ''
+                    email: george.baker1@gmail.com
+                    job: Web Developer
+                    employer: National Health Service
+                    public_options:
+                      invited: true
+                      access: true
+                      visible:
+                        enabled: true
+                        address: true
+                        email: true
+                        mobile: true
+                        telephone: true
+                    communication:
+                      general_email: 1
+                      general_sms: 1
+                      phone: 1
+                      post: 1
+                      rota_email: 1
+                      rota_sms: 1
+                    location:
+                      address: 44 Pruder Lane, Nottingham, NG9 2FE
+                      latitude: '52.926458'
+                      longitude: "-1.204129"
+                    custom_fields: []
+                    images: []
+                    ongoing_consent:
+                      required: 1
+                      request_ctime: '2022-01-19 16:15:05'
+                      granted_ctime: 
+                      granted_name: 
+                    status: active
+                    site_id: 1
+                    site_ids:
+                    - '1'
+                    mtime: '2021-05-25 16:14:16'
+                    muser: richard
+                    ctime: '2011-07-18 22:20:12'
+                    cuser: import
+
                 properties:
                   pagination:
                     type: object

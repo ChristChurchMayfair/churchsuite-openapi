@@ -98,7 +98,7 @@ paths:
     get:
       tags:
         - General
-      description: ''
+      description: "Return the details regarding an account's global contact information."
       parameters: []
       responses:
         '200':
@@ -201,52 +201,108 @@ paths:
                     type: string
                   muser:
                     type: string
+                example:
+                  name: ChurchSuite Developers
+                  timezone: Europe/London
+                  currency: GBP
+                  language: en-gb
+                  give2_keyword: KHC
+                  first_day_of_week: '1'
+                  data_protection_title: Privacy Notice
+                  data_protection_body: ''
+                  data_protection_help: ''
+                  email_font: Open Sans
+                  email_footer: Kings Hope Church
+                  email_template: plain
+                  email_open_tracking: true
+                  billing_address:
+                    id: 
+                    line1: 1 Broadway
+                    line2: Lace Market
+                    line3: 
+                    city: Nottingham
+                    county: Nottinghamshire
+                    postcode: NG1 1PR
+                    country: GB
+                    latitude: 52.9421262260486
+                    longitude: -1.17162785403717
+                  billing_region: ENG
+                  billing_contact:
+                    first_name: Nathaniel
+                    last_name: Alsop
+                    telephone: 0115 824 2300
+                    email: support@churchsuite.com
+                  account_contact:
+                    first_name: Nathaniel
+                    last_name: Alsop
+                    telephone: 0115 824 2300
+                    email: nathaniel@churchsuite.com
+                  data_protection_contact:
+                    first_name: Data
+                    last_name: Protection
+                    telephone: 0115 824 2300
+                    email: datacontroller@kingshope.church
+                  ctime: '2022-04-08 10:58:42'
+                  cuser: churchsuite
+                  mtime: '2022-09-13 10:14:50'
+                  muser: Ant
+
   /v1/addressbook/contacts:
     get:
       tags:
         - Address Book
-      description: ''
+      description: 'Return contacts ordered alphabetically'
       parameters:
         - in: query
           name: name
+          description: "Return contacts whose Name matches the query parameter value"
           required: false
           schema:
             type: string
+          example: "gavin courtney"
         - in: query
           name: q
+          description: "Return contacts whose Name, Address, Job, Email, Telephone or Mobile contains the query parameter value"
           required: false
           schema:
             type: string
         - in: query
           name: page
+          description: "Return the nth page of contacts"
           required: false
           schema:
             type: integer
         - in: query
           name: per_page
+          description: "Return n contacts per page"
           required: false
           schema:
             type: integer
         - in: query
           name: public_access
+          description: "Return contacts filtered by \"Allow My ChurchSuite access\""
           required: false
           schema:
             type: integer
             enum: [0,1]
         - in: query
           name: public_invited
+          description: "Return contacts filtered by whether they have been sent a My ChurchSuite invite or not."
           required: false
           schema:
             type: integer
             enum: [0,1]
         - in: query
           name: public_visible
+          description: "Return contacts filtered by their Public Communication \"Name is visible\" setting. Default is 1"
           required: false
           schema:
             type: integer
-            enum: [0,1]
+            nullable: true
+            enum: [null, 0,1]
         - in: query
           name: view
+          description: "Return archived contacts; by default only active contacts will be returned"
           required: false
           schema:
             type: string

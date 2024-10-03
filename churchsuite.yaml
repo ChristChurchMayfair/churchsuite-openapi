@@ -58,7 +58,7 @@ paths:
         - General
       summary: Return data on the user accessing the API
       responses:
-        "200": # status code
+        "200":
           description: A JSON array of user names
           content:
             application/json:
@@ -322,7 +322,7 @@ paths:
             enum: [active,archived]
           example: archived
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:

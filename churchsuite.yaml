@@ -2,8 +2,15 @@ openapi: 3.0.3
 info:
   title: ChurchSuite API
   description: >-
-    This is an OpenAPI spec for the Church Suite API, reverse engineered based on the documentation provides in the Church Suite Github API repo.
-  termsOfService: http://swagger.io/terms/
+    This is an OpenAPI spec for the Church Suite API v1. It has been derived from the documentation in the Church Suite Github API repo.
+
+    Although the documentation is pretty good, it's lacking a little detail, and the lack of a formal OpenAPI spec means that creating a client
+    is a manual process.
+
+    Please be aware that this spec is not complete and is sure to contain errors. You use it at your own risk.
+    If you spot issues or want to offer improvements please feel free to submit PRs against the spec here: https://github.com/ChristChurchMayfair/churchsuite-openapi
+
+    Noting the issues in the ChurchSuite API repo, it seems that a v2 API is under construction, and there are indications that they will provide an OpenAPI spec for it.
   contact:
     email: tom@christchurchmayfair.org
   license:

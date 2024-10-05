@@ -39,6 +39,7 @@ components:
         permission_connect:
           type: boolean
     Tag:
+      description: "An object representing a tag; something that can be applied to contacts (either manually or via conditional logic)"
       type: object
       properties:
         id:

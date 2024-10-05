@@ -206,10 +206,13 @@ components:
       properties:
         no_results:
           type: number
+          description: "The total number of results available"
         page:
           type: number
+          description: "The number of this page - seems to be indexed from 1"
         per_page:
           type: number
+          description: "The number of results on this page"
   securitySchemes:
     AuthHeader:
       type: apiKey

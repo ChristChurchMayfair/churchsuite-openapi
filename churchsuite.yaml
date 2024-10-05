@@ -66,6 +66,141 @@ components:
           type: string
         muser:
           type: string
+    Contact:
+      type: object
+      properties:
+        id:
+          type: number
+        person_uuid:
+          type: string
+        type_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        title:
+          type: string
+        middle_name:
+          type: string
+        formal_name:
+          type: string
+        former_name:
+          type: string
+        maiden_name:
+          type: string
+        sex:
+          type: string
+        date_of_birth:
+          type: string
+        marital:
+          type: string
+        spouse_id:
+          type: integer
+        address:
+          type: string
+        address2:
+          type: string
+        address3:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        postcode:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        telephone:
+          type: string
+        mobile:
+          type: string
+        work_telephone:
+          type: string
+        email:
+          type: string
+        job:
+          type: string
+        employer:
+          type: string
+        public_options:
+          type: object
+          properties:
+            invited:
+              type: boolean
+            access:
+              type: boolean
+            visible:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                address:
+                  type: boolean
+                email:
+                  type: boolean
+                mobile:
+                  type: boolean
+                telephone:
+                  type: boolean
+        communication:
+          type: object
+          properties:
+            general_email:
+              type: number
+            general_sms:
+              type: number
+            phone:
+              type: number
+            post:
+              type: number
+            rota_email:
+              type: number
+            rota_sms:
+              type: number
+        location:
+          type: array
+          items:
+            type: object
+        custom_fields:
+          type: array
+          items:
+            type: object
+        images:
+          type: array
+          items:
+            type: object
+        ongoing_consent:
+          type: object
+          properties:
+            required:
+              type: number
+            request_ctime:
+              type: string
+            granted_ctime:
+              type: string
+            granted_name:
+              type: string
+        status:
+          type: string
+        site_id:
+          type: number
+        site_ids:
+          type: array
+          items:
+            type: string
+        mtime:
+          type: string
+        muser:
+          type: string
+        ctime:
+          type: string
+        cuser:
+          type: string
   securitySchemes:
     AuthHeader:
       type: apiKey
@@ -427,7 +562,6 @@ paths:
                     muser: richard
                     ctime: '2011-07-18 22:20:12'
                     cuser: import
-
                 properties:
                   pagination:
                     type: object
@@ -441,147 +575,7 @@ paths:
                   contacts:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        id:
-                          type: number
-                        person_id:
-                          type: number
-                        uuid:
-                          type: string
-                        type_id:
-                          type: string
-                        first_name:
-                          type: string
-                        last_name:
-                          type: string
-                        title:
-                          type: string
-                        middle_name:
-                          type: string
-                        formal_name:
-                          type: string
-                        former_name:
-                          type: string
-                        maiden_name:
-                          type: string
-                        sex:
-                          type: string
-                        date_of_birth:
-                          type: string
-                        marital:
-                          type: string
-                        spouse_id:
-                          type: number
-                        address:
-                          type: string
-                        address2:
-                          type: string
-                        address3:
-                          type: string
-                        city:
-                          type: string
-                        county:
-                          type: string
-                        postcode:
-                          type: string
-                        country:
-                          type: string
-                        latitude:
-                          type: number
-                        longitude:
-                          type: number
-                        telephone:
-                          type: string
-                        mobile:
-                          type: string
-                        work_telephone:
-                          type: string
-                        email:
-                          type: string
-                        job:
-                          type: string
-                        employer:
-                          type: string
-                        public_options:
-                          type: object
-                          properties:
-                            invited:
-                              type: boolean
-                            access:
-                              type: boolean
-                            visible:
-                              type: object
-                              properties:
-                                enabled:
-                                  type: boolean
-                                address:
-                                  type: boolean
-                                email:
-                                  type: boolean
-                                mobile:
-                                  type: boolean
-                                telephone:
-                                  type: boolean
-                        communication:
-                          type: object
-                          properties:
-                            general_email:
-                              type: number
-                            general_sms:
-                              type: number
-                            phone:
-                              type: number
-                            post:
-                              type: number
-                            rota_email:
-                              type: number
-                            rota_sms:
-                              type: number
-                        location:
-                          type: object
-                          properties:
-                            address:
-                              type: string
-                            latitude:
-                              type: string
-                            longitude:
-                              type: string
-                        custom_fields:
-                          type: array
-                          items:
-                            type: object
-                        images:
-                          type: array
-                          items:
-                            type: object
-                        ongoing_consent:
-                          type: object
-                          properties:
-                            required:
-                              type: number
-                            request_ctime:
-                              type: string
-                            granted_ctime:
-                              type: string
-                            granted_name:
-                              type: string
-                        status:
-                          type: string
-                        site_id:
-                          type: number
-                        site_ids:
-                          type: array
-                          items:
-                            type: string
-                        mtime:
-                          type: string
-                        muser:
-                          type: string
-                        ctime:
-                          type: string
-                        cuser:
-                          type: string
+                      $ref: "#/components/schemas/Contact"
   /v1/addressbook/contact/{personId}:
     get:
       operationId: getContact
@@ -600,140 +594,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: number
-                  person_uuid:
-                    type: string
-                  type_id:
-                    type: string
-                  first_name:
-                    type: string
-                  last_name:
-                    type: string
-                  title:
-                    type: string
-                  middle_name:
-                    type: string
-                  formal_name:
-                    type: string
-                  former_name:
-                    type: string
-                  maiden_name:
-                    type: string
-                  sex:
-                    type: string
-                  date_of_birth:
-                    type: string
-                  marital:
-                    type: string
-                  spouse_id:
-                    type: integer
-                  address:
-                    type: string
-                  address2:
-                    type: string
-                  address3:
-                    type: string
-                  city:
-                    type: string
-                  county:
-                    type: string
-                  postcode:
-                    type: string
-                  country:
-                    type: string
-                  latitude:
-                    type: number
-                  longitude:
-                    type: number
-                  telephone:
-                    type: string
-                  mobile:
-                    type: string
-                  work_telephone:
-                    type: string
-                  email:
-                    type: string
-                  job:
-                    type: string
-                  employer:
-                    type: string
-                  public_options:
-                    type: object
-                    properties:
-                      invited:
-                        type: boolean
-                      access:
-                        type: boolean
-                      visible:
-                        type: object
-                        properties:
-                          enabled:
-                            type: boolean
-                          address:
-                            type: boolean
-                          email:
-                            type: boolean
-                          mobile:
-                            type: boolean
-                          telephone:
-                            type: boolean
-                  communication:
-                    type: object
-                    properties:
-                      general_email:
-                        type: number
-                      general_sms:
-                        type: number
-                      phone:
-                        type: number
-                      post:
-                        type: number
-                      rota_email:
-                        type: number
-                      rota_sms:
-                        type: number
-                  location:
-                    type: array
-                    items:
-                      type: object
-                  custom_fields:
-                    type: array
-                    items:
-                      type: object
-                  images:
-                    type: array
-                    items:
-                      type: object
-                  ongoing_consent:
-                    type: object
-                    properties:
-                      required:
-                        type: number
-                      request_ctime:
-                        type: string
-                      granted_ctime:
-                        type: string
-                      granted_name:
-                        type: string
-                  status:
-                    type: string
-                  site_id:
-                    type: number
-                  site_ids:
-                    type: array
-                    items:
-                      type: string
-                  mtime:
-                    type: string
-                  muser:
-                    type: string
-                  ctime:
-                    type: string
-                  cuser:
-                    type: string
+                $ref: "#/components/schemas/Contact"
     delete:
       tags:
         - General

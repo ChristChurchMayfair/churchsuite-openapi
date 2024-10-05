@@ -230,6 +230,15 @@ components:
       name: "X-Account"
       in: header
       description: "The identifier for the churchsuite account you're using (see the DNS prefix of your church's churchsuite site)"
+tags:
+  - name: "Address Book - Contacts"
+    description: "Operations for managing contacts (e.g. people and basic information about them)"
+    externalDocs:
+      url: https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/addressbook.md
+  - name: "Address Book - Tags"
+    description: "Operations for viewing tags (a mechanism for grouping and categorising contacts), and which contacts (people) are tagged with these tags."
+    externalDocs:
+      url: https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/addressbook.md#list-tags
 paths:
   /v1/whoami:
     get:

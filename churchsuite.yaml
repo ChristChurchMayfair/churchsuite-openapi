@@ -1054,7 +1054,7 @@ paths:
     get:
       tags:
         - "Address Book - Tags"
-      description: ''
+      description: "Return data for a specific tag with the given ID"
       parameters:
         - in: path
           name: tagId
@@ -1093,12 +1093,17 @@ paths:
                     type: string
                   muser:
                     type: string
-  /v1/addressbook/tag/1/contacts:
+  /v1/addressbook/tag/{tagId}/contacts:
     get:
       tags:
         - "Address Book - Tags"
-      description: ''
-      parameters: []
+      description: 'Return the contacts for the tag with the given ID'
+      parameters:
+        - in: path
+          name: tagId
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: OK

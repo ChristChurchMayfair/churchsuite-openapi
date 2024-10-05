@@ -257,7 +257,7 @@ paths:
   /v1/addressbook/contacts:
     get:
       tags:
-        - Address Book
+        - "Address Book - Contacts"
       description: 'Return contacts ordered alphabetically'
       parameters:
         - in: query
@@ -558,7 +558,7 @@ paths:
     get:
       operationId: getContact
       tags:
-        - Address Book
+        - "Address Book - Contacts"
       description: ''
       parameters:
         - in: path
@@ -722,7 +722,7 @@ paths:
   /v1/addressbook/contact/{personId}/tags:
     get:
       tags:
-        - Address Book
+        - "Address Book - Tags"
       description: ''
       parameters:
         - in: path
@@ -779,7 +779,7 @@ paths:
   /v1/addressbook/contact/{personId}/keydates:
     get:
       tags:
-        - Address Book
+        - "Address Book - Contacts"
       description: ''
       parameters:
         - in: path
@@ -813,7 +813,7 @@ paths:
   /v1/addressbook/contact:
     post:
       tags:
-        - Address Book
+        - "Address Book - Contacts"
       description: ''
       parameters: []
       requestBody:
@@ -1001,7 +1001,7 @@ paths:
   /v1/addressbook/tags:
     get:
       tags:
-        - Address Book
+        - "Address Book - Tags"
       description: ''
       parameters: []
       responses:
@@ -1053,7 +1053,7 @@ paths:
   /v1/addressbook/tag/{tagId}:
     get:
       tags:
-        - Address Book
+        - "Address Book - Tags"
       description: ''
       parameters:
         - in: path
@@ -1096,7 +1096,7 @@ paths:
   /v1/addressbook/tag/1/contacts:
     get:
       tags:
-        - Address Book
+        - "Address Book - Tags"
       description: ''
       parameters: []
       responses:

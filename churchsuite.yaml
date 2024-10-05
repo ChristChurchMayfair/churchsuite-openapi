@@ -639,32 +639,7 @@ paths:
                   tags:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        id:
-                          type: number
-                        tag_id:
-                          type: number
-                        name:
-                          type: string
-                        description:
-                          type: string
-                        colour:
-                          type: string
-                        type:
-                          type: string
-                        tag_no_contacts:
-                          type: number
-                        no_contacts:
-                          type: number
-                        ctime:
-                          type: string
-                        cuser:
-                          type: string
-                        mtime:
-                          type: string
-                        muser:
-                          type: string
+                      $ref: "#/components/schemas/Tag"
   /v1/addressbook/contact/{personId}/keydates:
     get:
       tags:

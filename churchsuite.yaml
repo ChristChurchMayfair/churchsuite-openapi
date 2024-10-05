@@ -38,6 +38,34 @@ components:
           type: boolean
         permission_connect:
           type: boolean
+    Tag:
+      type: object
+      properties:
+        id:
+          type: number
+        tag_id:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        colour:
+          type: string
+        type:
+          type: string
+          enum: ["smart","fixed"]
+        tag_no_contacts:
+          type: number
+        no_contacts:
+          type: number
+        ctime:
+          type: string
+        cuser:
+          type: string
+        mtime:
+          type: string
+        muser:
+          type: string
   securitySchemes:
     AuthHeader:
       type: apiKey
@@ -1024,32 +1052,7 @@ paths:
                   tags:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        id:
-                          type: number
-                        tag_id:
-                          type: number
-                        name:
-                          type: string
-                        description:
-                          type: string
-                        colour:
-                          type: string
-                        type:
-                          type: string
-                        tag_no_contacts:
-                          type: number
-                        no_contacts:
-                          type: number
-                        ctime:
-                          type: string
-                        cuser:
-                          type: string
-                        mtime:
-                          type: string
-                        muser:
-                          type: string
+                      $ref: "#/components/schemas/Tag"
   /v1/addressbook/tag/{tagId}:
     get:
       tags:
@@ -1067,32 +1070,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: number
-                  tag_id:
-                    type: number
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  colour:
-                    type: string
-                  type:
-                    type: string
-                  tag_no_contacts:
-                    type: number
-                  no_contacts:
-                    type: number
-                  ctime:
-                    type: string
-                  cuser:
-                    type: string
-                  mtime:
-                    type: string
-                  muser:
-                    type: string
+                $ref: "#/components/schemas/Tag"
   /v1/addressbook/tag/{tagId}/contacts:
     get:
       tags:

@@ -218,14 +218,17 @@ components:
       type: apiKey
       name: "X-Auth"
       in: header
+      description: "The private credential for your account provided by ChurchSuite support."
     ApplicationId:
       type: apiKey
       name: "X-Application"
       in: header
+      description: "A string to identify your application, can be anything, but ideally meaningful and not re-used between applications."
     AccountId:
       type: apiKey
       name: "X-Account"
       in: header
+      description: "The identifier for the churchsuite account you're using (see the DNS prefix of your church's churchsuite site)"
 paths:
   /v1/whoami:
     get:

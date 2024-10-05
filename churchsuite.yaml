@@ -311,7 +311,7 @@ paths:
           schema:
             type: integer
             nullable: true
-            enum: [null, 0,1]
+            enum: [0,1]
           example: 1
         - in: query
           name: view

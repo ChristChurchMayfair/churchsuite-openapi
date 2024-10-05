@@ -201,6 +201,15 @@ components:
           type: string
         cuser:
           type: string
+    Pagination:
+      type: object
+      properties:
+        no_results:
+          type: number
+        page:
+          type: number
+        per_page:
+          type: number
   securitySchemes:
     AuthHeader:
       type: apiKey
@@ -564,14 +573,7 @@ paths:
                     cuser: import
                 properties:
                   pagination:
-                    type: object
-                    properties:
-                      no_results:
-                        type: number
-                      page:
-                        type: number
-                      per_page:
-                        type: number
+                    $ref: "#/components/schemas/Pagination"
                   contacts:
                     type: array
                     items:
@@ -877,14 +879,7 @@ paths:
                 type: object
                 properties:
                   pagination:
-                    type: object
-                    properties:
-                      no_results:
-                        type: number
-                      page:
-                        type: number
-                      per_page:
-                        type: number
+                    $ref: "#/components/schemas/Pagination"
                   tags:
                     type: array
                     items:
@@ -927,14 +922,7 @@ paths:
                 type: object
                 properties:
                   pagination:
-                    type: object
-                    properties:
-                      no_results:
-                        type: number
-                      page:
-                        type: number
-                      per_page:
-                        type: number
+                    $ref: "#/components/schemas/Pagination"
                   contacts:
                     type: array
                     items:

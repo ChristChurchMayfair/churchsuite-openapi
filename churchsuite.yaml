@@ -1122,7 +1122,9 @@ paths:
                       $ref: "#/components/schemas/KeyDate"
   /v1/addressbook/keydate/{keyDateId}:
     get:
-      description: ''
+      tags:
+        - "Address Book - Key Dates"
+      description: 'Return data for a specific key date'
       parameters:
         - name: keyDateId
           required: true
@@ -1138,7 +1140,9 @@ paths:
                 $ref: "#/components/schemas/KeyDate"
   /v1/addressbook/keydate/{keyDateId}/contacts:
     get:
-      description: ''
+      tags:
+        - "Address Book - Key Dates"
+      description: 'Return the contacts for a specific key date'
       parameters:
         - name: keyDateId
           required: true

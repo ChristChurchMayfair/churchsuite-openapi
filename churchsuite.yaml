@@ -256,6 +256,10 @@ tags:
     description: "Operations for viewing tags (a mechanism for grouping and categorising contacts), and which contacts (people) are tagged with these tags."
     externalDocs:
       url: https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/addressbook.md#list-tags
+  - name: "Address Book - Key Dates"
+    description: "Operations for viewing key dates and their association with contacts (i.e. people)"
+    externalDocs:
+      url: https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/addressbook.md#list-key-dates
 paths:
   /v1/whoami:
     get:

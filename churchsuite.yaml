@@ -1493,6 +1493,72 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Event"
+  /v1/calendar/categories:
+    get:
+      tags:
+        - "Calendar - Categories"
+      description: 'Return categories ordered alphabetically'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    $ref: "#/components/schemas/Pagination"
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        name:
+                          type: string
+                        colour:
+                          type: string
+                        status:
+                          type: string
+                        brand_id:
+                          type: string
+                        ctime:
+                          type: string
+                        cuser:
+                          type: string
+                        mtime:
+                          type: string
+                        muser:
+                          type: string
+                        brand:
+                          type: object
+                          properties:
+                            brand_css:
+                              type: string
+                            color:
+                              type: string
+                            emblem:
+                              type: string
+                            logo:
+                              type: string
+                            name:
+                              type: string
+                            favicon_16:
+                              type: string
+                            favicon_32:
+                              type: string
+                            favicon_64:
+                              type: string
+                            favicon_128:
+                              type: string
+                            favicon_152:
+                              type: string
+                            favicon_200:
+                              type: string
+                            favicon_512:
+                              type: string
+
 security:
   - AuthHeader: []
     ApplicationId: []

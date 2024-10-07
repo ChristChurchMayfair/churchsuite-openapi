@@ -214,6 +214,23 @@ components:
         per_page:
           type: number
           description: "The number of results on this page"
+    KeyDate:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        color:
+          type: string
+        mtime:
+          type: string
+        muser:
+          type: string
+        ctime:
+          type: string
+        cuser:
+          type: string
   securitySchemes:
     AuthHeader:
       type: apiKey
@@ -661,7 +678,7 @@ paths:
   /v1/addressbook/contact/{personId}/keydates:
     get:
       tags:
-        - "Address Book - Contacts"
+        - "Address Book - Key Dates"
       description: ''
       parameters:
         - in: path
@@ -1075,6 +1092,90 @@ paths:
                           type: array
                           items:
                             type: string
+                        mtime:
+                          type: string
+                        muser:
+                          type: string
+                        ctime:
+                          type: string
+                        cuser:
+                          type: string
+  /v1/addressbook/keydates:
+    get:
+      tags:
+        - "Address Book - Key Dates"
+      description: 'Return key dates ordered alphabetically'
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    $ref: "#/components/schemas/Pagination"
+                  keydates:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/KeyDate"
+  /v1/addressbook/keydate/{keyDateId}:
+    get:
+      description: ''
+      parameters:
+        - name: keyDateId
+          required: true
+          in: path
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KeyDate"
+  /v1/addressbook/keydate/{keyDateId}/contacts:
+    get:
+      description: ''
+      parameters:
+        - name: keyDateId
+          required: true
+          in: path
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    $ref: "#/components/schemas/Pagination"
+                  keydates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        keydate_id:
+                          type: number
+                        resource_type:
+                          type: string
+                        resource_id:
+                          type: number
+                        date:
+                          type: string
+                        description:
+                          type: string
+                        linked_resource_type:
+                          type: string
+                        linked_resource_id:
+                          type: string
                         mtime:
                           type: string
                         muser:

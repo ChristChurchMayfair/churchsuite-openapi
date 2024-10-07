@@ -1194,6 +1194,8 @@ paths:
                           type: string
   /v1/calendar/events:
     get:
+      tags:
+        - "Calendar - Events"
       description: 'Return future events'
       parameters:
         - name: q

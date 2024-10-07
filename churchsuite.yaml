@@ -1472,6 +1472,27 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Event"
+  /v1/calendar/event/{eventIdOrIdentifier}:
+    get:
+      tags:
+        - "Calendar - Events"
+      description: 'Return data for a specific event'
+      parameters:
+        - name: eventIdOrIdentifier
+          description: A numeric event ID or string identifier
+          in: path
+          required: true
+          schema:
+            oneOf:
+              - type: string
+              - type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Event"
 security:
   - AuthHeader: []
     ApplicationId: []

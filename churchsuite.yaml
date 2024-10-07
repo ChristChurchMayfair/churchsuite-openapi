@@ -1192,6 +1192,247 @@ paths:
                           type: string
                         cuser:
                           type: string
+  /v1/calendar/events:
+    get:
+      description: 'Return future events'
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    $ref: "#/components/schemas/Pagination"
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                        identifier:
+                          type: string
+                        sequence:
+                          type: string
+                        name:
+                          type: string
+                        datetime_start:
+                          type: string
+                        datetime_end:
+                          type: string
+                        description:
+                          type: string
+                        category:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            color:
+                              type: string
+                        status:
+                          type: string
+                        visible_to:
+                          type: array
+                          items:
+                            type: object
+                        brand:
+                          type: object
+                          properties:
+                            brand_css:
+                              type: string
+                            color:
+                              type: string
+                            emblem:
+                              type: string
+                            logo:
+                              type: string
+                            name:
+                              type: string
+                            favicon_16:
+                              type: string
+                            favicon_32:
+                              type: string
+                            favicon_64:
+                              type: string
+                            favicon_128:
+                              type: string
+                            favicon_152:
+                              type: string
+                            favicon_200:
+                              type: string
+                            favicon_512:
+                              type: string
+                        capacity:
+                          type: string
+                        images:
+                          type: array
+                          items:
+                            type: object
+                        location:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                            latitude:
+                              type: string
+                            longitude:
+                              type: string
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            url:
+                              type: string
+                        signup_options:
+                          type: object
+                          properties:
+                            notification:
+                              type: string
+                            connect:
+                              type: object
+                              properties:
+                                visible:
+                                  type: string
+                            embed:
+                              type: object
+                              properties:
+                                visible:
+                                  type: string
+                                enabled:
+                                  type: string
+                            public:
+                              type: object
+                              properties:
+                                visible:
+                                  type: string
+                                enabled:
+                                  type: string
+                                featured:
+                                  type: string
+                            sequence_signup:
+                              type: string
+                            signup_cancel:
+                              type: string
+                            signup_enabled:
+                              type: string
+                            tickets:
+                              type: object
+                              properties:
+                                enabled:
+                                  type: string
+                                url:
+                                  type: string
+                            visible_to_tags:
+                              type: array
+                              items:
+                                type: object
+                            fixed_questions:
+                              type: object
+                              properties:
+                                name:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    response_type:
+                                      type: string
+                                    required:
+                                      type: boolean
+                                    hidden:
+                                      type: boolean
+                                email:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    response_type:
+                                      type: string
+                                    required:
+                                      type: string
+                                    hidden:
+                                      type: boolean
+                                mobile:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    response_type:
+                                      type: string
+                                    required:
+                                      type: boolean
+                                    hidden:
+                                      type: boolean
+                                notes:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    response_type:
+                                      type: string
+                                    required:
+                                      type: boolean
+                                    hidden:
+                                      type: boolean
+                        site:
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            initials:
+                              type: string
+                            color:
+                              type: string
+                            order:
+                              type: number
+                            address:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                line1:
+                                  type: string
+                                line2:
+                                  type: string
+                                line3:
+                                  type: string
+                                city:
+                                  type: string
+                                county:
+                                  type: string
+                                postcode:
+                                  type: string
+                                country:
+                                  type: string
+                            mtime:
+                              type: string
+                            muser:
+                              type: string
+                            ctime:
+                              type: string
+                            cuser:
+                              type: string
+                        pin:
+                          type: number
+                        invite_hash:
+                          type: string
+                        public_visible:
+                          type: boolean
+                        mtime:
+                          type: string
+                        muser:
+                          type: string
+                        ctime:
+                          type: string
+                        cuser:
+                          type: string
+
 security:
   - AuthHeader: []
     ApplicationId: []

@@ -1195,7 +1195,41 @@ paths:
   /v1/calendar/events:
     get:
       description: 'Return future events'
-      parameters: []
+      parameters:
+        - name: q
+          description: "Return future events whose name contains the value of this parameter"
+          schema:
+            type: string
+          in: query
+        - name: date_start
+          description: "Will return events after this date"
+          schema:
+            type: string
+          in: query
+        - name: date_end
+          description: "Will return events before this date"
+          schema:
+            type: string
+          in: query
+        - name: group_by_sequence
+          description: "Will group sequence events together only showing the next event in that sequence"
+          schema:
+            type: boolean
+          in: query
+        - name: group_by_sequence_and_name
+          description: "Will group sequence events together only showing the next events in that sequence with unique names"
+          schema:
+            type: boolean
+          in: query
+        - name: categories
+          description: "will return events within categories specified"
+          schema:
+            type: array
+            items:
+              type: integer
+          in: query
+          style: form
+          explode: false
       responses:
         '200':
           description: OK

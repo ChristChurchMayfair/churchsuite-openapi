@@ -1558,6 +1558,224 @@ paths:
                               type: string
                             favicon_512:
                               type: string
+  /v1/my/details:
+    get:
+      tags:
+        - "My"
+      description: 'Return the contact details for the logged in contact'
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  person_uuid:
+                    type: string
+                  type_id:
+                    type: string
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  title:
+                    type: string
+                  middle_name:
+                    type: string
+                  formal_name:
+                    type: string
+                  former_name:
+                    type: string
+                  maiden_name:
+                    type: string
+                  sex:
+                    type: string
+                  date_of_birth:
+                    type: string
+                  marital:
+                    type: string
+                  spouse_id:
+                    type: number
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  address3:
+                    type: string
+                  city:
+                    type: string
+                  county:
+                    type: string
+                  postcode:
+                    type: string
+                  country:
+                    type: string
+                  latitude:
+                    type: number
+                  longitude:
+                    type: number
+                  telephone:
+                    type: string
+                  mobile:
+                    type: string
+                  work_telephone:
+                    type: string
+                  email:
+                    type: string
+                  job:
+                    type: string
+                  employer:
+                    type: string
+                  public_options:
+                    type: object
+                    properties:
+                      invited:
+                        type: boolean
+                      access:
+                        type: boolean
+                      visible:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          address:
+                            type: boolean
+                          email:
+                            type: boolean
+                          mobile:
+                            type: boolean
+                          telephone:
+                            type: boolean
+                  communication:
+                    type: object
+                    properties:
+                      general_email:
+                        type: number
+                      general_sms:
+                        type: number
+                      phone:
+                        type: number
+                      post:
+                        type: number
+                      rota_email:
+                        type: number
+                      rota_sms:
+                        type: number
+                  location:
+                    type: array
+                    items:
+                      type: object
+                  custom_fields:
+                    type: array
+                    items:
+                      type: object
+                  images:
+                    type: array
+                    items:
+                      type: object
+                  ongoing_consent:
+                    type: object
+                    properties:
+                      required:
+                        type: number
+                      request_ctime:
+                        type: string
+                      granted_ctime:
+                        type: string
+                      granted_name:
+                        type: string
+                  status:
+                    type: string
+                  site_id:
+                    type: number
+                  site_ids:
+                    type: array
+                    items:
+                      type: string
+                  mtime:
+                    type: string
+                  muser:
+                    type: string
+                  ctime:
+                    type: string
+                  cuser:
+                    type: string
+                  profile_meta_data:
+                    type: object
+                    properties:
+                      sex:
+                        type: string
+                      fuzzy_address:
+                        type: string
+                      dob:
+                        type: string
+                      age:
+                        type: string
+                      job:
+                        type: string
+                      employer:
+                        type: string
+                      marital_status:
+                        type: string
+                      spouse_name:
+                        type: string
+                      former_name:
+                        type: string
+                      formal_name:
+                        type: string
+                      custom_fields:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            field_name:
+                              type: string
+                            field_label:
+                              type: string
+                            field_value:
+                              type: string
+                  public_hash:
+                    type: string
+                  email_opt_out:
+                    type: boolean
+                  rota_email_opt_out:
+                    type: boolean
+                  sms_opt_out:
+                    type: boolean
+                  rota_sms_opt_out:
+                    type: boolean
+                  student_details:
+                    type: object
+                    properties:
+                      line1:
+                        type: string
+                      line2:
+                        type: string
+                      line3:
+                        type: string
+                      city:
+                        type: string
+                      county:
+                        type: string
+                      postcode:
+                        type: string
+                      country:
+                        type: string
+                      telephone:
+                        type: string
+                      university:
+                        type: string
+                      course:
+                        type: string
+                      year_start:
+                        type: string
+                      year_end:
+                        type: string
+
 
 security:
   - AuthHeader: []

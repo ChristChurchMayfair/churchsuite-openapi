@@ -172,9 +172,7 @@ components:
           items:
             type: object
         images:
-          type: array
-          items:
-            type: object
+          $ref: "#/components/schemas/Images"
         ongoing_consent:
           type: object
           properties:
@@ -293,9 +291,7 @@ components:
         capacity:
           type: string
         images:
-          type: array
-          items:
-            type: object
+          $ref: "#/components/schemas/Images"
         location:
           type: object
           properties:
@@ -455,8 +451,34 @@ components:
           type: string
         cuser:
           type: string
-
-
+    Image:
+      type: object
+      properties:
+        px:
+          type: number
+        square:
+          type: boolean
+        transparent:
+          type: boolean
+        mtime:
+          type: number
+        url:
+          type: string
+    Images:
+      type: object
+      properties:
+        thumb:
+          description: 128x128px square image. A square cropped version of image that was originally uploaded.
+          $ref: "#/components/schemas/Image"
+        sm:
+          description: 256px wide image. A width-resized version of the image that was originally uploaded.
+          $ref: "#/components/schemas/Image"
+        md:
+          description: 512px wide image. A width-resized version of the image that was originally uploaded.
+          $ref: "#/components/schemas/Image"
+        lg:
+          description: 1024px wide image. A width-resized version of the image that was originally uploaded.
+          $ref: "#/components/schemas/Image"
   securitySchemes:
     AuthHeader:
       type: apiKey
@@ -531,9 +553,7 @@ paths:
                       bookings:  
                         $ref: "#/components/schemas/ModuleInfo"
                   images:
-                    type: array
-                    items:
-                      type: object
+                    $ref: "#/components/schemas/Images"
                   sites:
                     type: object
   /v1/profile:
@@ -820,7 +840,7 @@ paths:
                       latitude: '52.926458'
                       longitude: "-1.204129"
                     custom_fields: []
-                    images: []
+                    images:
                     ongoing_consent:
                       required: 1
                       request_ctime: '2022-01-19 16:15:05'
@@ -1097,9 +1117,7 @@ paths:
                     items:
                       type: object
                   images:
-                    type: array
-                    items:
-                      type: object
+                    $ref: "#/components/schemas/Images"
                   ongoing_consent:
                     type: object
                     properties:
@@ -1300,9 +1318,7 @@ paths:
                           items:
                             type: object
                         images:
-                          type: array
-                          items:
-                            type: object
+                          $ref: "#/components/schemas/Images"
                         ongoing_consent:
                           type: object
                           properties:
@@ -1674,9 +1690,7 @@ paths:
                     items:
                       type: object
                   images:
-                    type: array
-                    items:
-                      type: object
+                    $ref: "#/components/schemas/Images"
                   ongoing_consent:
                     type: object
                     properties:

@@ -1411,13 +1411,13 @@ paths:
                       type: object
                       properties:
                         id:
-                          type: number
+                          type: integer
                         keydate_id:
-                          type: number
+                          type: integer
                         resource_type:
                           type: string
                         resource_id:
-                          type: number
+                          type: integer
                         date:
                           type: string
                         description:
@@ -1425,7 +1425,7 @@ paths:
                         linked_resource_type:
                           type: string
                         linked_resource_id:
-                          type: string
+                          type: integer
                         mtime:
                           type: string
                         muser:

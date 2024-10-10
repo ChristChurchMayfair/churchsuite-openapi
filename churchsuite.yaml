@@ -511,6 +511,7 @@ tags:
 paths:
   /v1/whoami:
     get:
+      operationId: whoAmI
       tags:
         - General
       summary: Return data on the user accessing the API
@@ -558,6 +559,7 @@ paths:
                     type: object
   /v1/profile:
     get:
+      operationId: getProfile
       tags:
         - General
       description: "Return the details regarding an account's global contact information."
@@ -711,6 +713,7 @@ paths:
 
   /v1/addressbook/contacts:
     get:
+      operationId: listContacts
       tags:
         - "Address Book - Contacts"
       description: 'Return contacts ordered alphabetically'
@@ -881,6 +884,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Contact"
     delete:
+      operationId: deleteContact
       tags:
         - "Address Book - Contacts"
       description: ''
@@ -895,6 +899,7 @@ paths:
           description: OK
   /v1/addressbook/contact/{personId}/tags:
     get:
+      operationId: getContactTags
       tags:
         - "Address Book - Tags"
       description: ''
@@ -927,6 +932,7 @@ paths:
                       $ref: "#/components/schemas/Tag"
   /v1/addressbook/contact/{personId}/keydates:
     get:
+      operationId: getContactKeyDates
       tags:
         - "Address Book - Key Dates"
       description: ''
@@ -961,6 +967,7 @@ paths:
                           type: number
   /v1/addressbook/contact:
     post:
+      operationId: createContact
       tags:
         - "Address Book - Contacts"
       description: ''
@@ -1147,6 +1154,7 @@ paths:
                     type: string
   /v1/addressbook/tags:
     get:
+      operationId: listTags
       tags:
         - "Address Book - Tags"
       description: ''
@@ -1167,6 +1175,7 @@ paths:
                       $ref: "#/components/schemas/Tag"
   /v1/addressbook/tag/{tagId}:
     get:
+      operationId: getTag
       tags:
         - "Address Book - Tags"
       description: "Return data for a specific tag with the given ID"
@@ -1185,6 +1194,7 @@ paths:
                 $ref: "#/components/schemas/Tag"
   /v1/addressbook/tag/{tagId}/contacts:
     get:
+      operationId: getTagContacts
       tags:
         - "Address Book - Tags"
       description: 'Return the contacts for the tag with the given ID'
@@ -1348,6 +1358,7 @@ paths:
                           type: string
   /v1/addressbook/keydates:
     get:
+      operationId: listKeyDates
       tags:
         - "Address Book - Key Dates"
       description: 'Return key dates ordered alphabetically'
@@ -1368,6 +1379,7 @@ paths:
                       $ref: "#/components/schemas/KeyDate"
   /v1/addressbook/keydate/{keyDateId}:
     get:
+      operationId: getKeyDate
       tags:
         - "Address Book - Key Dates"
       description: 'Return data for a specific key date'
@@ -1386,6 +1398,7 @@ paths:
                 $ref: "#/components/schemas/KeyDate"
   /v1/addressbook/keydate/{keyDateId}/contacts:
     get:
+      operationId: getKeyDateContacts
       tags:
         - "Address Book - Key Dates"
       description: 'Return the contacts for a specific key date'
@@ -1436,6 +1449,7 @@ paths:
                           type: string
   /v1/calendar/events:
     get:
+      operationId: listEvents
       tags:
         - "Calendar - Events"
       description: 'Return future events'
@@ -1490,6 +1504,7 @@ paths:
                       $ref: "#/components/schemas/Event"
   /v1/calendar/event/{eventIdOrIdentifier}:
     get:
+      operationId: getEvent
       tags:
         - "Calendar - Events"
       description: 'Return data for a specific event'
@@ -1511,6 +1526,7 @@ paths:
                 $ref: "#/components/schemas/Event"
   /v1/calendar/categories:
     get:
+      operationId: listCalendarCategories
       tags:
         - "Calendar - Categories"
       description: 'Return categories ordered alphabetically'
@@ -1576,6 +1592,7 @@ paths:
                               type: string
   /v1/my/details:
     get:
+      operationId: getMyDetails
       tags:
         - "My"
       description: 'Return the contact details for the logged in contact'
